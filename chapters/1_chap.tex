@@ -3,9 +3,19 @@
     %
         \subsection*{Buoyancy force}\label{sec:Buoyancy force}
         %
+        A body submerged in a fluid experiences a force anti-parallel to the gravitational force and proportional to the
+        mass of the fluid displaced.
+        %
         \subsection*{Surface Tension}
         %
+        In a simplified manner attracting intermolecular interactions inside a fluid can be seen as isotrope. Thus,
+        they cancel each other out. The closer a particle gets to the interfacing layer of another medium the fewer neighbors
+        there are to exert attracting forces from that direction. The attracting force a particle along the interfacing
+        layer experiences nets to a force normal to the interface layer and directed inside the fluid.
+        %
         \subsection*{Surfactant}
+        %
+        A material or compound able to alter or even nullify the intermolecular forces inside a fluid (typically a liquid).
         %
         \subsection*{\textsc{Du Noüy}-Method to Measure the Surface Tension of a Liquid}
         %
@@ -13,9 +23,16 @@
         %
         \subsection*{Working Principle of a Strain Gauge}
         %
+        Stress induced change of the geometry of a strain gauge translates to a change of its resistance. The impossibility
+        to measure electrical resistance directly it typically gets transduced to a voltage signal in order to be further
+        processed.
+        %
         \subsection*{Working Principle of an Instrumentation Amplifier}
         %
         \subsection*{Resolution of an Analog-Digital Converter}
+        %
+        An analog-to-digital converter (hereafter referred to as ADC) converts a continuous to a discrete, bitwise signal.
+        The number of fractions the ADC is able to divide a given signal to gives the resolution of that ADC.
         %
     \section{Preparation}
     %
@@ -58,7 +75,49 @@
             %
         \section{Gravitational Force of the \textsc{Du Noüy}-Ring in Water and Air}\label{sec:A3 gravi force of du noüy ring}% A3
         %
+        Air:
+
+        \begin{equation}
+            F_{Ring,Air} = -m_{Ring} \cdot g
+        \end{equation}
+
+        Water:
+
+        \begin{align}
+            F_{Ring,H_2O}  &= \left( m_{H_2O} - m_{Ring}\right) \cdot g \nonumber \\
+                            &= \left(\rho_{H_2O} - \rho_{Al}\right)V_{Ring} \cdot g
+        \end{align}
+        %
         \section{Deriving an Equation for \( U_{Br}(\nicefrac[]{\Delta l}{l}) \)}\label{sec:A4 equation for full bridge circuit}% A4
+        %
+        \begin{equation}
+            U_{Br} = U_2 - U_4 = U_3 - U_1 \quad \text{with} \quad U_{Br} = 0 \text{for} \frac{R_1}{R_2} = \frac{R_3}{R_4}
+        \end{equation}
+        \begin{equation}
+            U_{Br} = U_2 - U_4 = U_0 \cdot \left(\frac{R_2}{R_1 + R_2} - \frac{R_4}{R_3 + R_4}\right)
+        \end{equation}
+        Defining
+        \begin{align}
+            R_2 &= R_3 = R + \Delta R \\
+            R_1 &= R_4 = R - \Delta R
+        \end{align}
+        leads to
+        \begin{align}
+            U_{Br}  &= U_0 \cdot \left(\frac{R + \Delta R}{R - \Delta R + R + \Delta R} - \frac{R - \Delta R}{R + \Delta R + R - \Delta R}\right) \nonumber \\
+                    &= U_0 \cdot \left(\frac{R+\Delta r}{2R} + \frac{-R + \Delta R}{2R}\right) \nonumber \\
+                    &= U_0 \cdot \frac{\Delta R}{R}
+            \label{eq:Ubr and delta R}
+        \end{align}
+        thus, the bridge voltage is linearly proportional to the factor \( \frac{\Delta R}{R} \).\par
+        Now, with the knowledge that the resistance of a body relates with its geometry by \( R = \varrho \cdot \frac{l}{b \cdot d} \)
+        and the change of its dimensions under stress follow
+        \begin{equation}
+            \frac{\Delta b}{b} = -\nu \frac{\Delta l}{l}, \quad \frac{\Delta d}{d} = -\nu \frac{\Delta l}{l}
+        \end{equation}
+        the bridge voltage can be expressed as
+        \begin{align}
+            U_{Br} = U_0 \cdot \left( \frac{\Delta s}{s} + \nu \cdot \frac{3 \Delta l}{l}\right)
+        \end{align}
         %
         \section{Schematic Diagram of a Full Bridge}\label{sec:A5 schematic diagram full bridge}% A5
         %

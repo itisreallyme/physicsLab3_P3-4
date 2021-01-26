@@ -60,7 +60,7 @@
             The number of fractions the ADC is able to divide a given signal to gives the resolution of that ADC.
     \section{Preparation}
     %
-        \subsection*{Force-Time-Curve}\label{sec:A1 force time curve}% A1
+        \subsection{Force-Time-Curve}\label{sec:A1 force time curve}% A1
         %
             In fig. 4 the force-time-diagram is subdivided into the following 8 parts:
             \begin{enumerate}
@@ -80,7 +80,7 @@
             qualitative point of view, everything is similar to that in fig. 4, except that after the lamella has
             collapsed, the force oscillates around the zero position.
             %
-        \subsection*{Surface Tension Formula}\label{sec:A2 derive eq.4}% A2
+        \subsection{Surface Tension Formula}\label{sec:A2 derive eq.4}% A2
         %
             The change of area $ \Delta A $ corresponds to the sum of inner and outer radius - $ r_i $ and $ r_a $ respectively - of
             the ring multiplied by the change in height $ \Delta x $:
@@ -165,6 +165,12 @@
             %
         \subsection{Schematic Diagram of a Full Bridge}\label{sec:A5 schematic diagram full bridge}% A5
         %
+            \begin{figure}[H]
+                \centering
+                \includesvg[inkscapelatex=false, width=.7\textwidth]{spice/wheatstone/wheatstone.svg}
+                \caption[Strain gauge in full bridge configuration]{Strain gauge in full bridge configuration.}
+                \label{fig:strain gauge full bridge}
+            \end{figure}
         \subsection{Characteristics of HX711}\label{sec:A6 characteristics of the HX711}% A6
         %
             \begin{align}

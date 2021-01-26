@@ -3,37 +3,61 @@
     %
         \subsection*{Buoyancy force}\label{sec:Buoyancy force}
         %
-        A body submerged in a fluid experiences a force anti-parallel to the gravitational force and proportional to the
-        mass of the fluid displaced.
-        %
+            A body submerged in a fluid experiences a force anti-parallel to the gravitational force and proportional to the
+            mass of the fluid displaced.
         \subsection*{Surface Tension}
         %
-        In a simplified manner attracting intermolecular interactions inside a fluid can be seen as isotrope. Thus,
-        they cancel each other out. The closer a particle gets to the interfacing layer of another medium the fewer neighbors
-        there are to exert attracting forces from that direction. The attracting force a particle along the interfacing
-        layer experiences nets to a force normal to the interface layer and directed inside the fluid.
+            In a simplified manner attracting intermolecular interactions inside a fluid can be seen as isotrope. Thus,
+            they cancel each other out. The closer a particle gets to the interfacing layer of another medium the fewer neighbors
+            there are to exert attracting forces from that direction. The attracting force a particle along the interfacing
+            layer experiences nets to a force normal to the interface layer and directed inside the fluid.
         %
         \subsection*{Surfactant}
         %
-        A material or compound able to alter or even nullify the intermolecular forces inside a fluid (typically a liquid).
+            A material or compound able to alter or even nullify the intermolecular forces inside a fluid (typically a liquid).
         %
         \subsection*{\textsc{Du Noüy}-Method to Measure the Surface Tension of a Liquid}
         %
+            A method to measure the surface tension of a liquid by measuring the force withdrawing a submerged ring from that
+            liquid \cite{ring.method.DuNouy.1919}.
         \subsection*{Other Ways to Measure the Surface Tension of a Liquid}
         %
+            \textsc{Andreas-Hauser-Tucker} method or Pendant-drop method: the shape of a droplet is solely dependant of the
+            gravitational force and the surface energy. Knowing other parameters of the liquid in question the surface tension
+            can be acquired by geometrically evaluating photographs of hanging droplets \cite{Andreas-Hauser-Tucker.surface.tension.pendant.drop.1938}.\par
+            %
+            Capillary-tubes method: one opening of a tube of sufficiently small inner diameter is brought in contact with
+            the specimen. The liquid will - to some extent - travel along the tube depending on the adhesive forces between
+            the liquid and the tube wall, the gravitational force and the cohesive forces along the liquids surface i.e.
+            the surface tension.\par
+            %
+            Parallel-plates method: similar to the capillary-tubes method, the surface tension can be determined by evaluating
+            the rise of the liquid between two parallel plates brought in contact with the liquid.\par
+            %
+            Sessile drops and bubbles: in this method, the shape of a drop or bubble resting on a flat and horizontal surface
+            is examined.\par
+            %
+            \textsc{Jaegers} method: a tube is vertically submerged in a liquid leaving the lower and upper end open. Now,
+            if gas pressure is applied to the top of the liquid column inside the tube until a gas bubble escapes the lower
+            end the surface tension can be derived from the gas pressure at that moment.\par
+            %
+            Oscillating drops and bubbles: much like a pendulum, a drop or bubble is displaced from its shape of equilibrium.
+            Released and left alone, it will oscillate about the shape of equilibrium. Measuring the frequency the surface
+            tension can be derived \cite{oscillating.drops.surface.tension.Freer.2005}.
         \subsection*{Working Principle of a Strain Gauge}
         %
-        Stress induced change of the geometry of a strain gauge translates to a change of its resistance. The impossibility
-        to measure electrical resistance directly it typically gets transduced to a voltage signal in order to be further
-        processed.
-        %
+            Stress induced change of the geometry of a strain gauge translates to a change of its resistance. The impossibility
+            to measure electrical resistance directly it typically gets transduced to a voltage signal in order to be further
+            processed.
         \subsection*{Working Principle of an Instrumentation Amplifier}
         %
+            A instrumentation amplifier is a advanced version of the differential amplifier. A slight variation in the topology
+            of the differential amplifier allows to adjust the gain by change of just one resistor. This is benefitial as
+            it is likely to introduce distortion changing two resistors while maintaining balance \cite{instrumentation.amp.lessons.electric.circuits.20200216,instrumentation.amp.Kuphaldt.20150217}.
         \subsection*{Resolution of an Analog-Digital Converter}
         %
-        An analog-to-digital converter (hereafter referred to as ADC) converts a continuous to a discrete, bitwise signal.
-        The number of fractions the ADC is able to divide a given signal to gives the resolution of that ADC.
-        %
+            An analog-to-digital converter (hereafter referred to as ADC) converts a continuous to a discrete, bitwise signal.
+            The number of fractions the ADC is able to divide a given signal to gives the resolution of that ADC.
     \section{Preparation}
     %
         \subsection*{Force-Time-Curve}\label{sec:A1 force time curve}% A1
@@ -58,20 +82,39 @@
             %
         \subsection*{Surface Tension Formula}\label{sec:A2 derive eq.4}% A2
         %
-            The changing Area $ \Delta A $ corresponds to the inner plus outer circumference $ r_i $ and $ r_a $ of
-            the ring multiplied by the changing height $ \Delta x $:
+            The change of area $ \Delta A $ corresponds to the sum of inner and outer radius - $ r_i $ and $ r_a $ respectively - of
+            the ring multiplied by the change in height $ \Delta x $:
             \begin{align}
                 \Delta A = 2\pi \cdot (r_i + r_a) \cdot \Delta x
+                \label{eq:change of area}
             \end{align}
-            Since the diameter $ D = 2R $ of the ring is much longer than the thickness $ t = r_a - r_i $, it can be assumed
-            that the inner and outer circumferences are equal. It results:
+            Since the diameter $ D = 2R $ of the ring is much bigger than the thickness $ t = r_a - r_i $, \cref{eq:change of area}
+            can be simplified to
             \begin{equation}
                 \begin{gathered}
                     2R \gg r_a-r_i \quad \Rightarrow \quad r_i \approx r_a \approx R \\
                     \Leftrightarrow \\
                     \Delta A = 4\pi \cdot R \cdot \Delta x
+                    \label{eq:area}
                 \end{gathered}
             \end{equation}
+            Considering, that the amount of energy $ \Delta E $ is a result of the assumed constant force $ F_0 $ multiplied
+            by the change in height, it ensues:
+            \begin{align}
+                \Delta E = F_0 \cdot \Delta x
+                \label{eq:energy}
+            \end{align}
+            Since the surface tension $ \sigma $ is defined as the energy required to increase the surface divided by the change in surface area
+            \begin{align}
+                \sigma = \frac{\Delta E}{\Delta A}
+                \label{eq:surfacetensionraw}
+            \end{align}
+            and \cref{eq:area} as well as \cref{eq:energy} are inserted into \cref{eq:surfacetensionraw}, it follows:
+            \begin{align}
+                \sigma &= \frac{F_0 \cdot \Delta x}{4\pi \cdot R \cdot \Delta x} \nonumber\\
+                \sigma &= \frac{F_0}{4\pi \cdot R}
+                \label{eq:surfacetension}
+            \end{align}
             %
         \subsection{Gravitational Force of the \textsc{Du Noüy}-Ring in Water and Air}\label{sec:A3 gravi force of du noüy ring}% A3
             %
@@ -88,7 +131,7 @@
                                 &= \left(\rho_{H_2O} - \rho_{Al}\right)V_{Ring} \cdot g
             \end{align}
             %
-        \subsection{Deriving an Equation for \( U_{Br}(\nicefrac[]{\Delta l}{l}) \)}\label{sec:A4 equation for full bridge circuit}% A4
+        \subsection{Deriving an Equation for the bridge voltage}\label{sec:A4 equation for full bridge circuit}% A4
         %
             \begin{equation}
                 U_{Br} = U_2 - U_4 = U_3 - U_1 \quad \text{with} \quad U_{Br} = 0 \text{for} \frac{R_1}{R_2} = \frac{R_3}{R_4}

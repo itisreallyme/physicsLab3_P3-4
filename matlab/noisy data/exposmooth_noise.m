@@ -1,30 +1,38 @@
 clear
-T = readtable('monthly_csv.csv');
-T.Source = categorical(T.Source);
-gcag_rows = T.Source=='GCAG';
-gistemp_rows = T.Source=='GISTEMP';
-temps = {'Date','TempC'};
-gcag = T(gcag_rows,temps);
-gistemp = T(gistemp_rows,temps);
+generated_table_import;
+GLB([1,2],:) = [];
+GLB(:,[14:19]) = [];
 
-smoothing = 0.05;
+gistime(1:height(GLB)*(width(GLB)-1)) = zeros();
+gistemp(1:height(GLB)*(width(GLB)-1)) = zeros();
+k = 0;
+for row = 1:height(GLB)
+    for col = 2:width(GLB)
+        k = k + 1;
+        gistime(k) = GLB.Year(row)*10000+(col-1)*100+1;
+        gistemp(k) = GLB.(col)(row);
+    end
+end
+gistime = datetime(gistime,'ConvertFrom','yyyyMMdd','Format','yyyy-MM-dd');
 
-gcag_fil(1:length(gcag.TempC)) = zeros();
-gcag_fil(1) = gcag.TempC(1);
-for i = 2:length(gcag.TempC)
-    gcag_fil(i) = smoothing * gcag.TempC(i) + (1-smoothing)*gcag_fil(i-1);
+smoothing = 0.01;
+
+gistemp_fil(1:length(gistemp)) = zeros();
+gistemp_fil(1) = gistemp(1);
+for k = 2:length(gistemp)
+    gistemp_fil(k) = smoothing * gistemp(k) + (1-smoothing)*gistemp_fil(k-1);
 end
 
-gistemp_fil(1:length(gistemp.TempC)) = zeros();
-gistemp_fil(1) = gistemp.TempC(1);
-for i = 2:length(gistemp.TempC)
-    gistemp_fil(i) = smoothing * gistemp.TempC(i) + (1-smoothing)*gistemp_fil(i-1);
-end
-
-% plot(gcag.Date,gcag.TempC,gcag.Date,gcag_fil)
-plot(gistemp.Date,gistemp.TempC,gistemp.Date,gistemp_fil)
-title('Mean global temperature 1880-2016')
-xlabel('Years')
+p = plot(gistime,gistemp,gistime,gistemp_fil);
+p(1).LineWidth = 0.2;
+p(1).Color = '#99c2ff';
+p(2).LineWidth = 1;
+p(2).Color = 'k';
+ax = gca;
+ax.XAxis.FontSize = 18;
+ax.YAxis.FontSize = 18;
+title('Mean global temperature 1880-2020 (GISTEMP)', 'FontSize', 20)
+xlabel('Monthly')
 ylabel('Mean Temperature / °C')
-legend({'raw','filtered'},'Location','southeast')
+legend({'Raw','Filtered, \alpha = 0.01'},'Location','southeast', 'FontSize', 18)
 axis tight

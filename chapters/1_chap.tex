@@ -181,17 +181,48 @@
             %
         \subsection{Impact of Statistical Effects on the effective Resolution}\label{sec:A7 statistical effects}% A7
         %
-        The resolution \( n \) of an ADC as per specification implies an ideal, i.e. free-of-noise dc signal. The effective resolution —
-        or ENOB (\textbf{E}ffective \textbf{N}umber \textbf{O}f \textbf{B}its) — can be calculated by \cref{eq:ENOB}
-        \begin{equation}
-            ENOB = n - \log_2{\sigma}
-            \label{eq:ENOB}
-        \end{equation}
-        where \( \sigma \) is the RMS (\textbf{R}oot \textbf{M}ean \textbf{S}quare) or standard deviation of the signals noise.
-        %
+            The resolution \( n \) of an ADC as per specification implies an ideal, i.e. free-of-noise dc signal. The effective resolution —
+            or ENOB (\textbf{E}ffective \textbf{N}umber \textbf{O}f \textbf{B}its) — can be calculated by \cref{eq:ENOB}
+            \begin{equation}
+                ENOB = n - \log_2{\sigma}
+                \label{eq:ENOB}
+            \end{equation}
+            where \( \sigma \) is the RMS (\textbf{R}oot \textbf{M}ean \textbf{S}quare) or standard deviation of the signals noise.
+            %
         \subsection{Step Response of an Exponential Filter}\label{sec:A8 step response expo filter}% A8
         %
+            \begin{figure}[H]
+                \centering
+                \includesvg[inkscapelatex=false, width=.9\textwidth]{matlab/step_response/alphas.svg}
+                \caption[Exponential filter applied to square step signal]{An exponential filter algorithm applied to a square step signal (light blue) and its responses
+                for \(\alpha = 0.5\) (black), \(\alpha = 0.05\) (green) and \(\alpha = 0.01\) (orange).}
+                \label{fig:all step response samples}
+            \end{figure}
+            %
         \subsection{Simulation of the Filter Algorithm}\label{sec:A9 simu of the filter algo}% A9
         %
+            \Cref{fig:all expo filtered samples} shows the effect of an exponential filter algorithm applied to a data set to filter
+            out statistical noise. The algorithm takes a smoothing factor \(\alpha \in 0 \leq \alpha \leq 1\) as an input and outputs
+            a smoothed representation of the raw data.\par 
+            \begin{figure}[H]
+                \centering
+                \subfloat[Expo-smoothing at \(\alpha = 0.01\).\label{subfig:expo alpha 0.01}]{\includesvg[inkscapelatex=false, width=.9\textwidth]{matlab/noisy_data/alpha0.01.svg}}
+            \end{figure}
+            \begin{figure}[H]\ContinuedFloat
+                \centering
+                \subfloat[Expo-smoothing at \(\alpha = 0.05\).\label{subfig:expo alpha 0.05}]{\includesvg[inkscapelatex=false, width=.9\textwidth]{matlab/noisy_data/alpha0.05.svg}}
+            \end{figure}
+            \begin{figure}[H]\ContinuedFloat
+                \centering
+                \subfloat[Expo-smoothing at \(\alpha = 0.5\).\label{subfig:expo alpha 0.5}]{\includesvg[inkscapelatex=false, width=.9\textwidth]{matlab/noisy_data/alpha0.5.svg}}
+                \caption[Examples of an exponential filter algorithm applied to a noisy set of data]{Examples of an exponential
+                filter algorithm applied to a noisy set of data. To emphasize its effect on the output, three different values for the smoothing factor \(\alpha\) are shown.
+                The raw data is shown in light blue whereas black represents the filtered data. Raw data is provided by the Goddard Institute for Space Studies \cite{GISS.nasa.surface.temperature.analysis.20210120}}
+                \label{fig:all expo filtered samples}
+            \end{figure}
+            As seen in \cref{subfig:expo alpha 0.01} a too aggressive filtering of the data could bias the trending of the output
+            with respect to the raw data. Too less of smoothing on the other hand might still output too much noise (cf. \cref{subfig:expo alpha 0.5}).
+            Depending on the data in question, the smoothing factor needs to be adjusted as needed.
+            %
         \subsection{Expected Forces}\label{sec:A10 expected forces}% A10
         %

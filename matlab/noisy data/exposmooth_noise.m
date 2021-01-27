@@ -1,33 +1,30 @@
 clear
-fid=fopen('monthly_global_temps.csv');
-s=textscan(fid,'%s %s %f','Delimiter',',');
-fclose(fid);
-data = s{3};
-y = zeros(length(data)/2);
-y2 = zeros(length(data)/2);
-x = zeros(length(data)/2);
-for k = 1:length(data)
-    if mod(k,2) == 0
-        x(k/2) = k/2;
-        y(k/2) = data(length(data)+1-k);
-    end
-end
-for k = 1:length(data)
-    if mod(k+1,2) == 0
-        y2((k/2)+0.5) = data(length(data)+1-k);
-    end
+T = readtable('monthly_csv.csv');
+T.Source = categorical(T.Source);
+gcag_rows = T.Source=='GCAG';
+gistemp_rows = T.Source=='GISTEMP';
+temps = {'Date','TempC'};
+gcag = T(gcag_rows,temps);
+gistemp = T(gistemp_rows,temps);
+
+smoothing = 0.05;
+
+gcag_fil(1:length(gcag.TempC)) = zeros();
+gcag_fil(1) = gcag.TempC(1);
+for i = 2:length(gcag.TempC)
+    gcag_fil(i) = smoothing * gcag.TempC(i) + (1-smoothing)*gcag_fil(i-1);
 end
 
-smoothing = 0.5;
-
-y_s = zeros(length(y));
-for i = 2:length(y)
-    y_s(i) = smoothing * y(i-1) + (1-smoothing)*y(i);
+gistemp_fil(1:length(gistemp.TempC)) = zeros();
+gistemp_fil(1) = gistemp.TempC(1);
+for i = 2:length(gistemp.TempC)
+    gistemp_fil(i) = smoothing * gistemp.TempC(i) + (1-smoothing)*gistemp_fil(i-1);
 end
 
-y2_s = zeros(length(y2));
-for i = 2:length(y2)
-    y2_s(i) = smoothing * y2(i-1) + (1-smoothing)*y2(i);
-end
-
-plot(x,y,x,y_s)
+% plot(gcag.Date,gcag.TempC,gcag.Date,gcag_fil)
+plot(gistemp.Date,gistemp.TempC,gistemp.Date,gistemp_fil)
+title('Mean global temperature 1880-2016')
+xlabel('Years')
+ylabel('Mean Temperature / °C')
+legend({'raw','filtered'},'Location','southeast')
+axis tight

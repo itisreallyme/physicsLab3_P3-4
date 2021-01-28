@@ -1,10 +1,15 @@
 clear
+% call csv import and clear unnecessary rows and columns
 generated_table_import;
 GLB([1,2],:) = [];
 GLB(:,[14:19]) = [];
 
+% initialize line vectors to hold the time stamps and temperatures
 gistime(1:height(GLB)*(width(GLB)-1)) = zeros();
 gistemp(1:height(GLB)*(width(GLB)-1)) = zeros();
+
+% do some math to convert the first columns numeric data to more convinient
+% datetime format
 k = 0;
 for row = 1:height(GLB)
     for col = 2:width(GLB)
@@ -15,6 +20,7 @@ for row = 1:height(GLB)
 end
 gistime = datetime(gistime,'ConvertFrom','yyyyMMdd','Format','yyyy-MM-dd');
 
+% apply exp filter to the temperature data
 smoothing = 0.01;
 
 gistemp_fil(1:length(gistemp)) = zeros();
@@ -23,6 +29,7 @@ for k = 2:length(gistemp)
     gistemp_fil(k) = smoothing * gistemp(k) + (1-smoothing)*gistemp_fil(k-1);
 end
 
+% plotting
 p = plot(gistime,gistemp,gistime,gistemp_fil);
 p(1).LineWidth = 0.2;
 p(1).Color = '#99c2ff';

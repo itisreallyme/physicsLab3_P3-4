@@ -1,12 +1,16 @@
 clear
+
+% generate our step function
 points = 1000;
 data(1:points/2) = zeros();
 data((points/2)+1:points) = ones();
 
+% defining smoothing factors
 smoothing1 = 0.01;
 smoothing2 = 0.05;
 smoothing3 = 0.5;
 
+% expo filter magic
 data_fil(1:length(data),1:3) = zeros();
 for k = 2:length(data)
     data_fil(k,1) = smoothing1 * data(k) + (1-smoothing1)*data_fil(k-1,1);
@@ -14,6 +18,7 @@ for k = 2:length(data)
     data_fil(k,3) = smoothing3 * data(k) + (1-smoothing3)*data_fil(k-1,3);
 end
 
+% plot stuff
 p = plot(1:length(data),data,1:length(data),data_fil)
 p(1).LineWidth = 1;
 p(1).Color = '#99c2ff';

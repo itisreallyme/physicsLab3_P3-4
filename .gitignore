@@ -34,3 +34,7 @@ matlab/step_response/alpha0.5.svg
 matlab/step_response/alphas.eps
 matlab/step_response/step_response.asv
 svg-inkscape/alphas_svg-raw.pdf
+__MAIN_FILE.bbl
+__MAIN_FILE.blg
+__MAIN_FILE.pdf
+matlab/noisy_data/exposmooth_noise.asv

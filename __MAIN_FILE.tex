@@ -8,13 +8,14 @@
 \input{pre-packages}
 \input{pre-variables}
 \input{pre-newcommand}
-\input{pre-Seitenlayout}
-\input{pre-Kopf-Fusszeile-2010}
-\input{pre-Kopf-Fusszeilen-text-Bericht}
+\input{pre-page-layout}
+\input{pre-other-layouts}
+\input{pre-header-footer-2010}
+\input{pre-header-footer-text-report}
 \DeclareNameAlias{author}{family-given}
 \DeclareNameAlias{editor}{family-given}
 \DeclareNameAlias{translator}{family-given}
-\addbibresource{quellen.bib}
+\addbibresource{sources.bib}
 \begin{document}
 %-----------------------------------------------------------------
 \input{chapters/0_top}
@@ -29,7 +30,7 @@
 \listoftables
 \input{chapters/glossary}
 % \appendix
-% \input{chapters/appendix}
+\input{chapters/appendix}
 \printbibliography
 %=================================================================
 \end{document}

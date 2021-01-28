@@ -1,2 +1,9 @@
 \chapter{Appendix}
 %
+% \inputencoding{ascii}
+\lstinputlisting[caption={\textsc{MATLAB} script to simulate the step response of an exponential filter algorithm.}, label={code:step response}, style=MatLAB]{MatLAB/step_response/step_response.m}
+\newpage
+\lstinputlisting[caption={\textsc{MATLAB} script to apply an exponential filter to the GISTEMP v4 data set provided by the Goddard Institute of
+    Space Studies \cite{GISS.nasa.surface.temperature.analysis.20210120}.}, label={code:expo filter matlab}, style=matlab]{matlab/noisy_data/exposmooth_noise.m}
+\newpage
+\lstinputlisting[caption={\textsc{MATLAB} script to import the data set.}, label={code:import GISTEMP dataset matlab}, style=matlab]{matlab/noisy_data/generated_table_import.m}

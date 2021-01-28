@@ -107,13 +107,13 @@
             Since the surface tension $ \sigma $ is defined as the energy required to increase the surface divided by the change in surface area
             \begin{align}
                 \sigma = \frac{\Delta E}{\Delta A}
-                \label{eq:surfacetensionraw}
+                \label{eq:surface tension raw}
             \end{align}
-            and \cref{eq:area} as well as \cref{eq:energy} are inserted into \cref{eq:surfacetensionraw}, it follows:
+            and \cref{eq:area} as well as \cref{eq:energy} are inserted into \cref{eq:surface tension raw}, it follows:
             \begin{align}
                 \sigma &= \frac{F_0 \cdot \Delta x}{4\pi \cdot R \cdot \Delta x} \nonumber\\
                 \sigma &= \frac{F_0}{4\pi \cdot R}
-                \label{eq:surfacetension}
+                \label{eq:surface tension}
             \end{align}
             %
         \subsection{Gravitational Force of the \textsc{Du Noüy}-Ring in Water and Air}\label{sec:A3 gravi force of du noüy ring}% A3
@@ -217,7 +217,7 @@
                 \subfloat[Expo-smoothing at \(\alpha = 0.5\).\label{subfig:expo alpha 0.5}]{\includesvg[inkscapelatex=false, width=.9\textwidth]{matlab/noisy_data/alpha0.5.svg}}
                 \caption[Examples of an exponential filter algorithm applied to a noisy set of data]{Examples of an exponential
                 filter algorithm applied to a noisy set of data. To emphasize its effect on the output, three different values for the smoothing factor \(\alpha\) are shown.
-                The raw data is shown in light blue whereas black represents the filtered data. Raw data is provided by the Goddard Institute for Space Studies \cite{GISS.nasa.surface.temperature.analysis.20210120}}
+                The raw data is shown in light blue whereas black represents the filtered data. Raw data is provided by Goddard Institute for Space Studies \cite{GISS.nasa.surface.temperature.analysis.20210120}}
                 \label{fig:all expo filtered samples}
             \end{figure}
             As seen in \cref{subfig:expo alpha 0.01} a too aggressive filtering of the data could bias the trending of the output
@@ -226,3 +226,12 @@
             %
         \subsection{Expected Forces}\label{sec:A10 expected forces}% A10
         %
+        Relocating \cref{eq:surface tension} by the force \(F_0\) and knowing the parameters \(R\) and \(\sigma\) allows
+        for an estimation of that force.\par
+        With a radius \(R = \SI{0.03}{m}\) and the surface tension of water at room temperature \(\sigma_{25} \approx \SI{72}{\frac{mN}{m}}\) \cite{surface.tension.of.pure.water.Pallas.Harrison.1990}
+        the force required to tear the lamella calculates to
+        \begin{align}
+            F_{H_2O,25} &= \sigma_{H_2O,25} \cdot 4\pi \cdot R \nonumber \\
+                        &= \SI{72}{\frac{mN}{m}} \cdot 4\pi \cdot \SI{0.03}{m} \nonumber \\
+                        &\approx \SI{27.1}{mN}
+        \end{align}

@@ -131,7 +131,7 @@
                                 &= \left(\rho_{H_2O} - \rho_{Al}\right)V_{Ring} \cdot g
             \end{align}
             %
-        \subsection{Deriving an Equation for the bridge voltage}\label{sec:A4 equation for full bridge circuit}% A4
+        \subsection{Deriving an Equation for the Bridge Voltage}\label{sec:A4 equation for full bridge circuit}% A4
         %
             \begin{equation}
                 U_{Br} = U_2 - U_4 = U_3 - U_1 \quad \text{with} \quad U_{Br} = 0 \text{for} \frac{R_1}{R_2} = \frac{R_3}{R_4}
@@ -160,7 +160,7 @@
             \end{equation}
             the bridge voltage can be expressed as
             \begin{align}
-                U_{Br} = U_0 \cdot \left( \frac{\Delta s}{s} + \nu \cdot \frac{3 \Delta l}{l}\right)
+                U_{Br} = U_0 \cdot \left( \frac{\Delta \varrho}{\varrho} + \frac{\Delta l}{l} + \nu \cdot \frac{2 \Delta l}{l}\right)
             \end{align}
             %
         \subsection{Schematic Diagram of a Full Bridge}\label{sec:A5 schematic diagram full bridge}% A5
@@ -226,12 +226,12 @@
             %
         \subsection{Expected Forces}\label{sec:A10 expected forces}% A10
         %
-            Relocating \cref{eq:surface tension} by the force \(F_0\) and knowing the parameters \(R\) and \(\sigma\) allows
-            for an estimation of that force.\par
-            With a radius \(R = \SI{0.03}{m}\) and the surface tension of water at room temperature \(\sigma_{25} \approx \SI{72}{\frac{mN}{m}}\) \cite{surface.tension.of.pure.water.Pallas.Harrison.1990}
-            the force required to tear the lamella calculates to
-            \begin{align}
-                F_{H_2O,25} &= \sigma_{H_2O,25} \cdot 4\pi \cdot R \nonumber \\
-                            &= \SI{72}{\frac{mN}{m}} \cdot 4\pi \cdot \SI{0.03}{m} \nonumber \\
-                            &\approx \SI{27.1}{mN}
-            \end{align}
+        Relocating \cref{eq:surface tension} by the force \(F_0\) and knowing the parameters \(R\) and \(\sigma\) allows
+        for an estimation of that force.\par
+        With a radius \(R = \SI{0.03}{m}\) and the surface tension of water at room temperature \(\sigma_{25} \approx \SI{72}{\frac{mN}{m}}\) \cite{surface.tension.of.pure.water.Pallas.Harrison.1990}
+        the force required to tear the lamella calculates to
+        \begin{align}
+            F_{H_2O,25} &= \sigma_{H_2O,25} \cdot 4\pi \cdot R \nonumber \\
+                        &= \SI{72}{\frac{mN}{m}} \cdot 4\pi \cdot \SI{0.03}{m} \nonumber \\
+                        &\approx \SI{27.1}{mN}
+        \end{align}

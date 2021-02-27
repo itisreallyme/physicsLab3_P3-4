@@ -41,3 +41,8 @@ matlab/noisy_data/exposmooth_noise.asv
 referenzen/du_nouy1925_ring-method.pdf
 .gitignore
 referenzen/pallas.Harrison1990.surface.Tension.pure.water.pdf
+matlab/evaluation/expoFilter.asv
+matlab/evaluation/expoFilter.m
+matlab/evaluation/loadData.asv
+matlab/evaluation/loadData.m
+matlab/evaluation/test.asv

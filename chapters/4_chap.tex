@@ -7,7 +7,7 @@ c=\frac{\Delta n}{\Delta F}, \qquad [c]=\frac{1}{\SI{}{mN}}
 \end{align}
 Since this measurement failed, the literature value of the surface tension of distilled water has to be used in order to be able to carry out a backward calculation. For that, \cref{eq:surface tension} is transformed into the force $ F_0 $:
 \begin{align*}
-F_0=\sigma \cdot 4\pi \cdot R_{Ring}
+F_0=\sigma \cdot 4\pi \cdot R_{ring}
 \end{align*}
 With
 \begin{align}
@@ -16,13 +16,14 @@ F_0=F_{max}=\frac{n_{max}}{c}
 \end{align}
 it follows for distilled water:
 \begin{align}
-\frac{n_{max}}{c}&=\sigma_{H_2O} \cdot 4\pi \cdot R_{Ring} \nonumber \\
-\Leftrightarrow \qquad c&=\frac{n_{max}}{\sigma_{H_2O} \cdot 4\pi \cdot R_{Ring}}
+\frac{n_{max}}{c}&=\sigma_{H_2O} \cdot 4\pi \cdot R_{ring} \nonumber \\
+\Leftrightarrow \qquad c&=\frac{n_{max}}{\sigma_{H_2O} \cdot 4\pi \cdot R_{ring}}
 \label{eq:calibration factor}
 \end{align}
-with $ \sigma_{H_2O}=\SI{72.8}{\frac{mN}{m}} $ at $ 20 \SIUnitSymbolCelsius $ \cite{Eichler.2016}
+with $ \sigma_{H_2O}=\SI{72.8}{\frac{mN}{m}} $ at $ 20 \SIUnitSymbolCelsius $ \cite{Eichler.2016} \\
+and $ R_{ring}=\SI{0.03}{m} \pm \SI{0.00005}{m} $ (approximated with the inner radius $ r_i=\SI{0.02923}{m} $ and outer radius $ r_o=\SI{0.03}{m} $)
 \\\\
-The ADC result $ n_{max} $ can be read from the du Noüy ring method measurements with distilled water. There are 10 values for $ n_{max} $:
+The ADC result $ n_{max} $ can be read from the du Noüy ring method measurements with distilled water (\cref{fig:du_noüy_method_measurement_with_distilled_water_no_1_for_calibration}). There are 10 values for $ n_{max} $:
 \begin{align*}
 n_{max,i}=[80321, 77600, 77085, 80827, 76744, 82423, 79322, 77319, 79543, 77873]
 \end{align*}
@@ -45,7 +46,7 @@ The deviation of the calibration factor is calculated as follows:
 \end{align*}
 %
 \section{Resolution and Statistics}
-For comparison of the raw and filtered data of the A/D converter with regard to statistical variations, both are plotted as a function of the time in a stray diagram.\\
+For comparison of the raw and filtered data of the A/D converter with regard to statistical variations, both are plotted as a function of the time in a stray diagram in \cref{fig:adc_result}.\\
 As it can be seen, the raw data has a greater scattering. This is also confirmed by the standard deviations, which are as follows:
 \begin{align*}
 \bar{n}_{raw}&=-21, \qquad \sigma_{raw}=58\\
@@ -63,10 +64,12 @@ The effective resolution of the A/D converter is given by means of \cref{eq:ENOB
 \begin{align*}
 ENOB&=-23-\log_2(39)=-28
 \end{align*}
-Further, the histograms show that the raw data is more widely spread than the filtered one. The raw data histogram has a binning value of around 40 and the filtered data one of around 20.
+Further, the histograms (\cref{fig:histogram_raw_data} and \cref{fig:histogram_filtered_data}) show that the raw data is more widely spread than the filtered one. The raw data histogram has a binning value of around 40 and the filtered data one of around 20.
 %
 \section{Du Noüy Ring Method Measurement}
-The data is being sent to the PC during the measurement procedure. When the A/D results are converted into the force by way of \cref{eq:force}, the force-time-diagram is obtained.\\
+The data is being sent to the PC during the measurement procedure. When the A/D results are converted into the force by way of \cref{eq:force}, the force-time-diagram, as it is displayed in \crefrange{fig:1}{fig:4}, is obtained.
+
+\subsection*{Distilled Water}
 The maximum forces for distilled water are as follows:
 \begin{align*}
 F_{max,H_2O,i}=[27.9, 27.0, 26.8, 28.1, 26.7, 28.7, 27.6, 26.9, 27.7, 27.1] \quad \text{(all values in \SI{}{mN})}
@@ -75,4 +78,72 @@ The forces are around the mean value
 \begin{align*}
 \bar{F}_{max,H_2O}=\SI{27.5}{mN}
 \end{align*}
-,so the calculated value in \cref{eq:calculated force} is approximated well.
+,so the calculated value in \cref{eq:calculated force} is approximated well.\\
+By using \cref{eq:surface tension} for the surface tension of distilled water, it results:
+\begin{align*}
+\fbox{\sigma_{H_2O,determined}=\SI{(72.95 \pm 0.15)}{\frac{mN}{m}}}
+\end{align*}
+with the deviation
+\begin{align*}
+\Delta \sigma_{H_2O,determined} &= \left| \frac{\partial \sigma_{H_2O,determined}}{\partial \bar{F}_{max,H_2O}} \right| \cdot \Delta F + \left| \frac{\partial \sigma_{H_2O,determined}}{\partial R} \right| \cdot \Delta R \\
+&= \frac{1}{4\pi \cdot R_{ring}} \cdot \Delta F + \frac{\bar{F}_{max,H_2O}}{4\pi \cdot R_{ring}^2} \cdot \Delta R_{ring} \\
+&= \frac{1}{4\pi \cdot \SI{0.03}{m}} \cdot \SI{0.01}{mN} + \frac{\SI{27.5}{mN}}{4\pi \cdot (\SI{0.03}{m})^2} \cdot \SI{0.00005}{m} \\
+&= \SI{0.0265}{\frac{mN}{m}} + \SI{0.122}{\frac{mN}{m}} \\
+&= \SI{0.1485}{\frac{mN}{m}} \approx \SI{0.15}{\frac{mN}{m}}
+\end{align*}
+The determined value of $ \SI{72.95}{\frac{mN}{m}} $ fits well with the literature value of $ \SI{72.8}{\frac{mN}{m}} $. The error area covers the literature value.
+
+\subsection*{Detergent}
+The maximum forces for detergent are
+\begin{align*}
+F_{max,detergent,i}=[26.8, 25.8, 26.4, 23.9, 21.0, 21.6, 23.0, 22.6, 27.9, 23.8] \quad \text{(all values in \SI{}{mN})}
+\end{align*}
+and their mean value is
+\begin{align*}
+\bar{F}_{max,detergent}=\SI{24.3}{mN}
+\end{align*}
+For the detergents surface tension it results:
+\begin{align*}
+\fbox{\sigma_{detergent}=\SI{(64.46 \pm 0.13)}{\frac{mN}{m}}}
+\end{align*}
+The deviation is calculated equivalently to the one of distilled water.\\
+In order to be able to compare this value with the literature value, the concentration used has to be estimated. Approximately, the used mass of sodium dodecyl sulfate (detergent) is about $ \SI{0.01}{g} $. Its molar mass is $ \SI{288.4}{\frac{g}{mol}} $ \cite{Quelle2}. For the amount of substance it follows:
+\begin{align*}
+\text{amount of substance} = \frac{\text{mass}}{\text{molar mass}} = \frac{\SI{0.01}{g}}{\SI{288.4}{\frac{g}{mol}}} = \SI{0.035}{mmol}
+\end{align*}
+Thus the concentration for $ \SI{100}{mL} $ volume of water is
+\begin{align*}
+\text{concentration} = \frac{\text{amount of substance}}{\text{volume}} = \frac{\SI{0.035}{mmol}}{\SI{100}{mL}} = \SI{0.35}{\frac{mmol}{L}}
+\end{align*}
+In \cite{Quelle1} at $ \SI{0.35}{\frac{mmol}{L}} $ a surface tension of about $ \SI{63}{\frac{mN}{m}} $ can be read. So there is a good match between determined and literature value.
+
+\subsection*{More Detergent}
+Adding more detergent leads to these maximum forces:
+\begin{align*}
+F_{max,more detergent,i}=[25.8, 24.9, 20.5, 20.8, 18.5, 18.8, 20.9, 26.7, 28.0, 27.6] \quad \text{(all values in \SI{}{mN})}
+\end{align*}
+with the mean value
+\begin{align*}
+\bar{F}_{max,more detergent}=\SI{23.3}{mN}
+\end{align*}
+This means the following surface tension:
+\begin{align*}
+\fbox{\sigma_{more detergent}=\SI{(61.81 \pm 0.13)}{\frac{mN}{m}}}
+\end{align*}
+The surface tension of the liquid with added detergent is a little bit smaller than before. In \cite{Quelle1} it can be seen that the surface tension decreases with increasing concentration.
+
+\subsection*{Isopropanol}
+With isopropanol the following maximum forces are obtained:
+\begin{align*}
+F_{max,isopropanol,i}=[8.6, 8.0, 5.9, 5.9, 6.3, 7.7, 5.6, 7.9, 7.4, 7.9] \quad \text{(all values in \SI{}{mN})}
+\end{align*}
+They give the mean value
+\begin{align*}
+\bar{F}_{max,isopropanol}=\SI{6.3}{mN}
+\end{align*}
+The determined surface tension of isopropanol is therefore
+\begin{align*}
+\fbox{\sigma_{isopropanol}=\SI{(16.71 \pm 0.05)}{\frac{mN}{m}}}
+\end{align*}
+The deviation is also calculated as above.\\
+Both the determined and the literature value of isopropanols surface tension are in the same magnitude. The literature value is $ \SI{21.4}{\frac{mN}{m}} $ (\cite{Eichler.2016}) and thus the determined one is slightly lower. Here, the literature value is not covered by the error area as well.

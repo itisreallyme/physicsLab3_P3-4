@@ -1,78 +1,92 @@
 \chapter{Evaluation}
 %
-\section{Calibration of the Force Sensor}
-Because of a measurement misfortune for the calibration, the common way for determining the calibration factor is inoperable. Therefore another method is improvised. Originally, the calibration factor $ c $ was supposed to be determined by the linear fit of the ADC result-force-curve, while the weight of the different masses would have been converted into forces:
-\begin{align}
-c=\frac{\Delta n}{\Delta F}, \qquad [c]=\frac{1}{\SI{}{mN}}
-\end{align}
-Since this measurement failed, the literature value of the surface tension of distilled water has to be used in order to be able to carry out a backward calculation. For that, \cref{eq:surface tension} is transformed into the force $ F_0 $:
-\begin{align*}
-F_0=\sigma \cdot 4\pi \cdot R_{Ring}
-\end{align*}
-With
-\begin{align}
-F_0=F_{max}=\frac{n_{max}}{c}
-\label{eq:force}
-\end{align}
-it follows for distilled water:
-\begin{align}
-\frac{n_{max}}{c}&=\sigma_{H_2O} \cdot 4\pi \cdot R_{Ring} \nonumber \\
-\Leftrightarrow \qquad c&=\frac{n_{max}}{\sigma_{H_2O} \cdot 4\pi \cdot R_{Ring}}
-\label{eq:calibration factor}
-\end{align}
-with $ \sigma_{H_2O}=\SI{72.8}{\frac{mN}{m}} $ at $ 20 \SIUnitSymbolCelsius $ \cite{Eichler.2016}
-\\\\
-The ADC result $ n_{max} $ can be read from the du Noüy ring method measurements with distilled water. There are 10 values for $ n_{max} $:
-\begin{align*}
-n_{max,i}=[80321, 77600, 77085, 80827, 76744, 82423, 79322, 77319, 79543, 77873]
-\end{align*}
-The mean value and the deviation (as standard deviation) are
-\begin{align*}
-\bar{n}_{max}&=78906\\
-\Delta n_{max}&=1883
-\end{align*}
-\Cref{eq:calibration factor} gives the calibration factor:
-\begin{align*}
-\fbox{c=\SI{(2875 \pm 73)}{\frac{1}{mN}}}
-\end{align*}
-The deviation of the calibration factor is calculated as follows:
-\begin{align*}
-\Delta c&=\left| \frac{\partial c}{\partial n_{max}} \right| \cdot \Delta n_{max} + \left| \frac{\partial c}{\partial R_{Ring}} \right| \cdot \Delta R_{Ring} \\
-&=\frac{1}{\sigma_{H_2O} \cdot 4\pi \cdot R_{Ring}} \cdot \Delta n_{max} + \frac{n_{max}}{\sigma_{H_2O} \cdot 4\pi \cdot R_{Ring}^2} \cdot \Delta R_{Ring} \\
-&=\frac{1}{\SI{72.8}{\frac{mN}{m}} \cdot 4\pi \cdot \SI{0.03}{m}} \cdot 1883 + \frac{78906}{\SI{72.8}{\frac{mN}{m}} \cdot 4\pi \cdot (\SI{0.03}{m})^2} \cdot \SI{0.00005}{m} \\
-&=\SI{68.61}{\frac{1}{mN}}+\SI{4.79}{\frac{1}{mN}} \\
-&=\SI{73.4}{\frac{1}{mN}} \approx \SI{73}{\frac{1}{mN}}
-\end{align*}
-%
-\section{Resolution and Statistics}
-For comparison of the raw and filtered data of the A/D converter with regard to statistical variations, both are plotted as a function of the time in a stray diagram.\\
-As it can be seen, the raw data has a greater scattering. This is also confirmed by the standard deviations, which are as follows:
-\begin{align*}
-\bar{n}_{raw}&=-21, \qquad \sigma_{raw}=58\\
-\bar{n}_{filtered}&=-23, \qquad \sigma_{filtered}=39
-\end{align*}
-Based on that, the deviation of the force to be read can be determined as
-\begin{align*}
-\Delta F&=\left| \frac{\partial F}{\partial \bar{n}_{filtered}} \right| \cdot \sigma_{filtered} + \left| \frac{\partial F}{\partial c} \right| \cdot \Delta c \\
-&=\frac{1}{c} \cdot \sigma_{filtered} + \frac{\left|\bar{n}_{filtered}\right|}{c^2} \cdot \Delta c \\
-&=\frac{1}{\SI{2875}{\frac{1}{mN}}} \cdot 39 + \frac{23}{(\SI{2875}{\frac{1}{mN}})^2} \cdot \SI{73}{\frac{1}{mN}} \\
-&=\SI{0.0135}{mN}+\SI{0.0002}{mN} \\
-&=\SI{0.0137}{mN} \approx \SI{0.01}{mN}
-\end{align*}
-The effective resolution of the A/D converter is given by means of \cref{eq:ENOB}:
-\begin{align*}
-ENOB&=-23-\log_2(39)=-28
-\end{align*}
-Further, the histograms show that the raw data is more widely spread than the filtered one. The raw data histogram has a binning value of around 40 and the filtered data one of around 20.
-%
-\section{Du Noüy Ring Method Measurement}
-The data is being sent to the PC during the measurement procedure. When the A/D results are converted into the force by way of \cref{eq:force}, the force-time-diagram is obtained.\\
-The maximum forces for distilled water are as follows:
-\begin{align*}
-F_{max,H_2O,i}=[27.9, 27.0, 26.8, 28.1, 26.7, 28.7, 27.6, 26.9, 27.7, 27.1] \quad \text{(all values in \SI{}{mN})}
-\end{align*}
-The forces are around the mean value
-\begin{align*}
-\bar{F}_{max,H_2O}=\SI{27.5}{mN}
-\end{align*}
-,so the calculated value in \cref{eq:calculated force} is approximated well.
+    \section{Calibration of the Force Sensor}
+        Because of a measurement misfortune for the calibration, the common way for determining the calibration factor is
+        inoperable. Therefore, another method is improvised. Originally, the calibration factor \(c\) was supposed to be
+        determined by the linear fit of the ADC result-force-curve, while the weight of the different masses would have
+        been converted into forces:
+        \begin{align}
+            c=\frac{\Delta n}{\Delta F}, \qquad [c]=\frac{1}{\SI{}{mN}}
+        \end{align}
+        Since this measurement failed, the literature value of the surface tension of distilled water has to be used in
+        order to be able to carry out a backward calculation. For that, \cref{eq:surface tension} is transformed into the
+        force \(F_0\):
+        \begin{align*}
+            F_0=\sigma \cdot 4\pi \cdot R_{Ring}
+        \end{align*}
+        With
+        \begin{align}
+            F_0=F_{max}=\frac{n_{max}}{c}
+            \label{eq:force}
+        \end{align}
+        it follows for distilled water:
+        \begin{gather}
+            \frac{n_{max}}{c}           =\sigma_{H_2O} \cdot 4\pi \cdot R_{Ring} \nonumber \\
+            \Leftrightarrow \nonumber\\
+            c                           =\frac{n_{max}}{\sigma_{H_2O} \cdot 4\pi \cdot R_{Ring}}
+            \label{eq:calibration factor}
+        \end{gather}
+        with \(\sigma_{H_2O}=\SI{72.8}{\frac{mN}{m}}\) at \SI{20}{\celsius} \cite{Eichler.2016}.
+        \par\medskip
+        The ADC result \(n_{max}\) can be read from the \textsc{Du Noüy}-Ring method measurements with distilled water. There are
+        10 values for \(n_{max}\):
+        \begin{align*}
+            n_{max,i}=[80321, 77600, 77085, 80827, 76744, 82423, 79322, 77319, 79543, 77873]
+        \end{align*}
+        The mean value and the deviation (as standard deviation) are
+        \begin{align}
+            \bar{n}_{max}   &=78906 \nonumber \\
+            \Delta n_{max}  &=1883
+        \end{align}
+        The deviation of the calibration factor is calculated as follows:
+        \begin{align}
+            \Delta c&=\left| \frac{\partial c}{\partial n_{max}} \right| \cdot \Delta n_{max} + \left| \frac{\partial c}{\partial R_{Ring}} \right| \cdot \Delta R_{Ring} \nonumber \\
+            &=\frac{\Delta n_{max}}{\sigma_{H_2O} \cdot 4\pi \cdot R_{Ring}} + \frac{n_{max} \cdot \Delta R_{Ring}}{\sigma_{H_2O} \cdot 4\pi \cdot R_{Ring}^2} \nonumber \\
+            &=\frac{1883}{\SI{72.8}{\frac{mN}{m}} \cdot 4\pi \cdot \SI{0.03}{m}} + \frac{78906 \cdot \SI{50 \cdot 10^{-6}}{m}}{\SI{72.8}{\frac{mN}{m}} \cdot 4\pi \cdot (\SI{0.03}{m})^2} \nonumber \\
+            %&=\SI{68.61}{\frac{1}{mN}}+\SI{4.79}{\frac{1}{mN}} \nonumber \\
+            &=\SI{73.4}{\frac{1}{mN}}% \approx \SI{73}{\frac{1}{mN}}
+            \label{eq:calibration factor deviation}
+        \end{align}
+        \Cref{eq:calibration factor} and \cref{eq:calibration factor deviation} give a calibration factor of
+        \begin{align}
+            \fbox{c=\SI{(2875 \pm 73)}{\frac{1}{mN}}}
+        \end{align}
+        %
+    \section{Resolution and Statistics}
+        For comparison of the raw and filtered data of the ADC with regard to statistical variations, both are
+        plotted as a function of the time in a stray diagram.
+
+        As it can be seen, the raw data has a greater scattering. This is also confirmed by the standard deviations, which
+        are as follows:
+        \begin{align*}
+            \bar{n}_{raw}       &=-21, \qquad \sigma_{raw}=58\\
+            \bar{n}_{filtered}  &=-23, \qquad \sigma_{filtered}=39
+        \end{align*}
+        Based on that, the deviation of the force to be read can be determined as
+        \begin{align}
+            \Delta F    &=\left| \frac{\partial F}{\partial \bar{n}_{filtered}} \right| \cdot \sigma_{filtered} + \left| \frac{\partial F}{\partial c} \right| \cdot \Delta c \nonumber \\
+                        &=\frac{1}{c} \cdot \sigma_{filtered} + \frac{\left|\bar{n}_{filtered}\right|}{c^2} \cdot \Delta c \nonumber \\
+                        &=\frac{39}{\SI{2875}{\frac{1}{mN}}} + \frac{23 \cdot \SI{73}{\frac{1}{mN}}}{(\SI{2875}{\frac{1}{mN}})^2} \nonumber \\
+                        %&=\SI{13.5}{\micro N} + \SI{0.2}{\micro N} \nonumber \\
+                        &=\SI{0.0137}{mN}% \approx \SI{0.01}{mN}
+        \end{align}
+        The effective resolution of the ADC is given by means of \cref{eq:ENOB}:
+        \begin{align*}
+            ENOB    &=-23-\log_2(39)=-28
+        \end{align*}
+        Further, the histograms show that the raw data is more widely spread than the filtered one. The raw data histogram
+        has a binning value of around 40 and the filtered data one of around 20.
+        %
+    \section{Du Noüy Ring Method Measurement}
+        The data is being sent to the PC during the measurement procedure. When the ADC results are converted into the
+        force by way of \cref{eq:force}, the force-time-diagram is obtained.
+
+        The maximum forces for distilled water are as follows:
+        \begin{align*}
+            F_{max,H_2O,i}=[27.9, 27.0, 26.8, 28.1, 26.7, 28.7, 27.6, 26.9, 27.7, 27.1] \quad \text{(all values in \SI{}{mN})}
+        \end{align*}
+        The forces are around the mean value
+        \begin{align}
+            \bar{F}_{max,H_2O}=\SI{27.5}{mN}
+        \end{align}
+        so the calculated value in \cref{eq:calculated force} is approximated well.

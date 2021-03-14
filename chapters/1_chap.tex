@@ -85,16 +85,16 @@
             The change of area $ \Delta A $ corresponds to the sum of inner and outer radius - $ r_i $ and $ r_o $ respectively - of
             the ring multiplied by the change in height $ \Delta x $:
             \begin{align}
-                \Delta A = 2\pi \cdot (r_i + r_a) \cdot \Delta x
+                \Delta A = 2\pi \cdot (r_i + r_o) \cdot \Delta x
                 \label{eq:change of area}
             \end{align}
-            Since the diameter $ D = 2R_{Ring} $ of the ring is much bigger than the thickness $ t = r_o - r_i $, \cref{eq:change of area}
+            Since the diameter $ D = 2R_{ring} $ of the ring is much bigger than the thickness $ t = r_o - r_i $, \cref{eq:change of area}
             can be simplified to
             \begin{equation}
                 \begin{gathered}
-                    2R_{Ring} \gg r_o-r_i \quad \Rightarrow \quad r_i \approx r_a \approx R_{Ring} \\
+                    2R_{ring} \gg r_o-r_i \quad \Rightarrow \quad r_i \approx r_o \approx R_{ring} \\
                     \Leftrightarrow \\
-                    \Delta A = 4\pi \cdot R_{Ring} \cdot \Delta x
+                    \Delta A = 4\pi \cdot R_{ring} \cdot \Delta x
                     \label{eq:area}
                 \end{gathered}
             \end{equation}
@@ -111,8 +111,8 @@
             \end{align}
             and \cref{eq:area} as well as \cref{eq:energy} are inserted into \cref{eq:surface tension raw}, it follows:
             \begin{align}
-                \sigma &= \frac{F_0 \cdot \Delta x}{4\pi \cdot R_{Ring} \cdot \Delta x} \nonumber\\
-                \sigma &= \frac{F_0}{4\pi \cdot R_{Ring}}
+                \sigma &= \frac{F_0 \cdot \Delta x}{4\pi \cdot R_{ring} \cdot \Delta x} \nonumber\\
+                \sigma &= \frac{F_0}{4\pi \cdot R_{ring}}
                 \label{eq:surface tension}
             \end{align}
             %
@@ -226,13 +226,13 @@
             %
         \subsection{Expected Forces}\label{sec:A10 expected forces}% A10
         %
-        Relocating \cref{eq:surface tension} by the force \(F_0\) and knowing the parameters \(R_{Ring}\) and \(\sigma\) allows
+        Relocating \cref{eq:surface tension} by the force \(F_0\) and knowing the parameters \(R_{ring}\) and \(\sigma\) allows
         for an estimation of that force.\par
-        With a radius \(R_{Ring} = \SI{0.03}{m}\) and the surface tension of water at room temperature \(\sigma_{H_2O,25} \approx \SI{72}{\frac{mN}{m}}\) \cite{surface.tension.of.pure.water.Pallas.Harrison.1990}
+        With a radius \(R_{ring} = \SI{0.03}{m}\) and the surface tension of water at room temperature \(\sigma_{H_2O,25} \approx \SI{72}{\frac{mN}{m}}\) \cite{surface.tension.of.pure.water.Pallas.Harrison.1990}
         the force required to tear the lamella calculates to
         \begin{align}
-            F_{H_2O,25} &= \sigma_{H_2O,25} \cdot 4\pi \cdot R_{Ring} \nonumber \\
+            F_{H_2O,25} &= \sigma_{H_2O,25} \cdot 4\pi \cdot R_{ring} \nonumber \\
                         &= \SI{72}{\frac{mN}{m}} \cdot 4\pi \cdot \SI{0.03}{m} \nonumber \\
                         &\approx \SI{27.1}{mN}
-        \label{eq:calculated force}
+			\label{eq:calculated force}
         \end{align}

@@ -6,7 +6,7 @@
 \usepackage{array}
 %\usepackage[ngerman]{babel}
 %\usepackage[ngerman]{varioref}
-\iftoggle{deutsch}{%
+\ifbool{deutsch}{%
     \usepackage[ngerman]{babel}
     \usepackage[ngerman]{varioref}
 }{%
@@ -50,7 +50,7 @@
 \usepackage{multirow}
 \usepackage{multicol}
 %\usepackage[intoc]{nomencl}   % zwei Spalten beim Formelzeichenverzeichnis
-\iftoggle{deutsch}{%
+\ifbool{deutsch}{%
     \usepackage[german,intoc]{nomentbl} %vier Spalten bei Formelzeichenverzeichnis
 }{%
     \usepackage[english,intoc]{nomentbl} %vier Spalten bei Formelzeichenverzeichnis

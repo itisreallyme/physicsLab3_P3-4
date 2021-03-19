@@ -1,13 +1,13 @@
 \begin{titlepage}
 	% -------- Naming ------------------------------
-	\iftoggle{deutsch}{%
+	\ifbool{deutsch}{%
 	\newcommand{\nameA}{\thefirstnameA\space\thelastnameA}
 	\newcommand{\nameB}{\thefirstnameB\space\thelastnameB}
 	\newcommand{\nameC}{\thefirstnameC\space\thelastnameC}
 	}{%
-	\newcommand{\nameA}{\thelastnameA\,\space\thefirstnameA}
-	\newcommand{\nameB}{\thelastnameB\,\space\thefirstnameB}
-	\newcommand{\nameC}{\thelastnameC\,\space\thefirstnameC}
+	\newcommand{\nameA}{\thelastnameA\text{,}\space\thefirstnameA}
+	\newcommand{\nameB}{\thelastnameB\text{,}\space\thefirstnameB}
+	\newcommand{\nameC}{\thelastnameC\text{,}\space\thefirstnameC}
 	}
 	% ----------------------------------------------
 	\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 	
@@ -28,7 +28,7 @@
 %	\begin{flushleft}
 %\centering
 		\large
-		\iftoggle{deutsch}{%
+		\ifbool{deutsch}{%
 			\textit{\underline{Autor}}\par\vspace{0.5cm}
 		}{%
 			\textit{\underline{Authors}}\par\vspace{0.5cm}
@@ -40,7 +40,7 @@
 \end{minipage}
 %------------------------------------
 \vfill\vfill\vfill
-\iftoggle{deutsch}{%
+\ifbool{deutsch}{%
 	\textsc{\Large Fachbereich Ingenieurwissenschaften}\vspace{0.5cm}\par
 	\textsc{\large Studienbereich Angewandte Physik \& Medizintechnik}\vspace{0.5cm}
 	\vfill

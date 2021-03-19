@@ -125,56 +125,63 @@
         \subsection*{Detergent}
             The maximum forces for detergent are
             \begin{align*}
-                F_{max,i}^{detergent} = [26.8, 25.8, 26.4, 23.9, 21.0, 21.6, 23.0, 22.6, 27.9, 23.8] &&[\SI{}{mN}]
+                F_{max,i}^{\rho_1} = [26.8, 25.8, 26.4, 23.9, 21.0, 21.6, 23.0, 22.6, 27.9, 23.8] &&[\SI{}{mN}]
             \end{align*}
             and their mean value is
             \begin{align*}
-                \bar{F}_{max}^{detergent}=\SI{(24.3 \pm 2.3)}{mN}
+                \bar{F}_{max}^{\rho_1}=\SI{(24.3 \pm 2.3)}{mN}
             \end{align*}
             For the detergents surface tension it results:
             \begin{align}
-                \boxed{\sigma_{detergent}=\SI{(64.46 \pm 0.13)}{\frac{mN}{m}}}
+                \boxed{\sigma_{\rho_1}=\SI{(64.46 \pm 0.13)}{\frac{mN}{m}}}
             \end{align}
-            The deviation is calculated equivalently to the one of distilled water.\\
+            The deviation is calculated equivalently to the one of distilled water.\par\medskip
+            %
             In order to be able to compare this value with the literature value, the concentration used has to be estimated.
-            Approximately, the used mass of sodium dodecyl sulfate (detergent) is about \(\SI{0.01}{g}\). Its molar mass
-            is \(\SI{288.4}{\frac{g}{mol}}\) \cite{sodium.dodecyl.sulfate.cas.entry.2021}. For the amount of substance it follows:
+            Due to lack of preceding measurements of the masses \(m_{detergent}\) of detergent applied to the water, the mass
+            per application is approximated with \SI{0.01}{g}. Furthermore, the type of detergent was assumed to be sodium dodecyl sulfate
+            as it is a commonly used detergent. Its molar mass \(M\) is \SI{288.4}{\frac{g}{mol}} \cite{sodium.dodecyl.sulfate.cas.entry.2021}.
+            For the amount of the substance \(N\) it follows:
             \begin{align*}
-                \text{amount of substance} = \frac{\text{mass}}{\text{molar mass}} = \frac{\SI{0.01}{g}}{\SI{288.4}{\frac{g}{mol}}} = \SI{0.035}{mmol}
+                N = \frac{m_{detergent}}{M} = \frac{\SI{0.01}{g}}{\SI{288.4}{\frac{g}{mol}}} = \SI{35}{\micro mol}
             \end{align*}
-            Thus the concentration for $ \SI{100}{mL} $ volume of water is
+            Thus, the concentration \(\rho\) for \(V = \SI{100}{mL}\) of water is
             \begin{align*}
-                \text{concentration} = \frac{\text{amount of substance}}{\text{volume}} = \frac{\SI{0.035}{mmol}}{\SI{100}{mL}} = \SI{0.35}{\frac{mmol}{L}}
+                \rho = \frac{N}{V} = \frac{\SI{35}{\micro mol}}{\SI{100}{mL}} = \SI{0.35}{\frac{mmol}{L}}
             \end{align*}
-            In \cite{Quelle1} at $ \SI{0.35}{\frac{mmol}{L}} $ a surface tension of about $ \SI{63}{\frac{mN}{m}} $ can be read. So there is a good match between determined and literature value.
-
-        \subsection*{More Detergent}
+            In \cite{synth.of.ACD.as.surfactant.Kumar.2015} at \SI{0.35}{\frac{mmol}{L}} a surface tension of about \SI{63}{\frac{mN}{m}}
+            can be read. So there is a good match between determined and literature value.
+            %
+        \subsection*{Raising the Concentration of Detergent}
             Adding more detergent leads to these maximum forces:
             \begin{align*}
-                F_{max,more detergent,i}=[25.8, 24.9, 20.5, 20.8, 18.5, 18.8, 20.9, 26.7, 28.0, 27.6] \quad \text{(all values in \SI{}{mN})}
+                F_{max,i}^{\rho_2}=[25.8, 24.9, 20.5, 20.8, 18.5, 18.8, 20.9, 26.7, 28.0, 27.6] \quad \text{(all values in \SI{}{mN})}
             \end{align*}
             with the mean value
             \begin{align*}
-                \bar{F}_{max,more detergent}=\SI{23.3}{mN}
+                \bar{F}_{max}^{\rho_2}=\SI{23.3}{mN}
             \end{align*}
-            This means the following surface tension:
+            This calculates to a surface tension of
             \begin{align*}
-                \boxed{\sigma_{more detergent}=\SI{(61.81 \pm 0.13)}{\frac{mN}{m}}}
+                \boxed{\sigma_{\rho_2}=\SI{(61.81 \pm 0.13)}{\frac{mN}{m}}}
             \end{align*}
-            The surface tension of the liquid with added detergent is a little bit smaller than before. In \cite{synth.of.ACD.as.surfactant.Kumar.2015} it can be seen that the surface tension decreases with increasing concentration.
+            The surface tension of the liquid with added detergent is a bit smaller than before. This is an expected behavior as in \cite{synth.of.ACD.as.surfactant.Kumar.2015}
+            it can be seen that the surface tension decreases by increasing its concentration.
 
         \subsection*{Isopropanol}
             With isopropanol the following maximum forces are obtained:
             \begin{align*}
-                F_{max,isopropanol,i}=[8.6, 8.0, 5.9, 5.9, 6.3, 7.7, 5.6, 7.9, 7.4, 7.9] \quad \text{(all values in \SI{}{mN})}
+                F_{max,i}^{IPA}=[8.6, 8.0, 5.9, 5.9, 6.3, 7.7, 5.6, 7.9, 7.4, 7.9] &&[\SI{}{mN}]
             \end{align*}
             They give the mean value
             \begin{align*}
-                \bar{F}_{max,isopropanol}=\SI{6.3}{mN}
+                \bar{F}_{max}^{IPA}=\SI{6.3}{mN}
             \end{align*}
             The determined surface tension of isopropanol is therefore
             \begin{align*}
-                \boxed{\sigma_{isopropanol}=\SI{(16.71 \pm 0.05)}{\frac{\milli\newton}{\metre}}}
+                \boxed{\sigma_{IPA}=\SI{(16.71 \pm 0.05)}{\frac{\milli\newton}{\metre}}}
             \end{align*}
-            The deviation is also calculated as above.\\
-            Both the determined and the literature value of isopropanols surface tension are in the same magnitude. The literature value is $ \SI{21.4}{\frac{mN}{m}} $ (\cite{Eichler.2016}) and thus the determined one is slightly lower. Here, the literature value is not covered by the error area as well.
+            The deviation is also calculated as above.\par
+            Both the determined and the literature value of the surface tension of isopropanol are in the same magnitude. The
+            literature value is \SI{21.4}{\frac{mN}{m}} \cite{Eichler.2016} and thus the determined one is slightly
+            lower. Here, the literature value is not covered by the error area as well.

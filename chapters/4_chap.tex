@@ -1,9 +1,9 @@
 \chapter{Evaluation}
-%
+    %
     \section{Calibration of the Force Sensor}
         Because of a measurement misfortune for the calibration, the common way for determining the calibration factor is inoperable. Therefore another method is improvised. Originally, the calibration factor $ c $ was supposed to be determined by the linear fit of the ADC result-force-curve, while the weight of the different masses would have been converted into forces:
         \begin{align}
-            c=\frac{\Delta n}{\Delta F} \qquad \left[\frac{1}{\SI{}{mN}}\right]
+            c=\frac{\Delta n}{\Delta F} &&\left[\frac{1}{\SI{}{mN}}\right]
         \end{align}
         Since this measurement failed, the literature value of the surface tension of distilled water has to be used in order to be able to carry out a backward calculation. For that, \cref{eq:surface tension} is transformed into the force $ F_0 $:
         \begin{align*}
@@ -24,7 +24,7 @@
         with \(\sigma_{H_2O}=\SI{72.8}{\frac{mN}{m}}\) at \SI{20}{\celsius} \cite{Eichler.2016} and \(R_{ring} = \SI{0.03}{m} \pm \SI{0.00005}{m}\)
         (approximated with the inner radius $ r_i=\SI{0.02923}{m} $ and outer radius $ r_o=\SI{0.03}{m} $)\par\medskip
         %
-        The ADC result \(n_{max}\) can be read from \textsc{Du Noüy}s ring method measurements with distilled water (\cref{fig:du_noüy_method_measurement_with_distilled_water_no_1_for_calibration}).
+        The ADC result \(n_{max}\) can be read from \textsc{Du Noüy}s ring method measurements with distilled water (\cref{fig:du_nouy_method_measurement_with_distilled_water_no_1_for_calibration}).
         There are 10 values for \(n_{max}\):
         \begin{align*}
             n_{max,i}=[80321, 77600, 77085, 80827, 76744, 82423, 79322, 77319, 79543, 77873]
@@ -46,11 +46,22 @@
                         &=\SI{68.61}{\frac{1}{mN}}+\SI{4.79}{\frac{1}{mN}} \nonumber \\
                         &=\SI{73.4}{\frac{1}{mN}} \approx \SI{73}{\frac{1}{mN}}
         \end{align}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=.9\textwidth]{scidavis/Du_Nouy_Method_Measurement_with_distilled_water_No_1_for_cal.jpg}
+            \caption[]{}
+            \label{fig:du_nouy_method_measurement_with_distilled_water_no_1_for_calibration}
+        \end{figure}
         %
     \section{Resolution and Statistics}
         For comparison of the raw and filtered data of the ADC with regard to statistical variations, both are
         plotted as a function of the time in a stray diagram in \cref{fig:adc_result}.\par
         As it can be seen, the raw data has a greater scattering. This is also confirmed by the standard deviations, which are as follows:
+        \begin{figure}[h]
+            \centering\includegraphics[width=.9\textwidth]{scidavis/ADC_result.jpg}
+            \caption[]{}
+            \label{fig:adc_result}
+        \end{figure}
         \begin{align*}
             \bar{n}_{raw}       &=-21 \qquad \sigma_{raw}=58\\
             \bar{n}_{filtered}  &=-23 \qquad \sigma_{filtered}=39
@@ -67,20 +78,34 @@
         \begin{align*}
             ENOB&=-23-\log_2(39)=-28
         \end{align*}
-        Further, the histograms (\cref{fig:histogram_raw_data} and \cref{fig:histogram_filtered_data}) show that the raw data is more widely spread than the filtered one. The raw data histogram has a binning value of around 40 and the filtered data one of around 20.
+        Further, the histograms (\cref{fig:histogram_raw_data} and \cref{fig:histogram_filtered_data}) show that the raw
+        data is more widely spread than the filtered one. The raw data histogram has a binning value of around 40 and the
+        filtered data one of around 20.
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=.9\textwidth]{scidavis/histogram_filtered_data.jpg}
+            \caption[]{}
+            \label{fig:histogram_filtered_data}
+        \end{figure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=.9\textwidth]{scidavis/histogram_raw_data.jpg}
+            \caption[]{}
+            \label{fig:histogram_raw_data}
+        \end{figure}
         %
     \section{\textsc{Du Noüy} Ring Method Measurement}
         The data is being sent to the PC during the measurement procedure. The diagram representing force over time, as it
-        is displayed in \crefrange{fig:1}{fig:4}, is obtained converting the ADC data into the force by way of \cref{eq:force}. 
+        is displayed in \cref{fig:Du_Nouy_Method_Measurement_with_distilled_water_No_1,fig:Du_Nouy_Method_Measurement_with_detergent_No_1,fig:Du_Nouy_Method_Measurement_with_more_detergent_No_1,fig:Du_Nouy_Method_Measurement_with_isopropanol_No_1}, is obtained converting the ADC data into the force by way of \cref{eq:force}. 
         %
         \subsection*{Distilled Water}
             The maximum forces for distilled water are as follows:
             \begin{align*}
-                F_{max,i}^{H_2O}=[27.9, 27.0, 26.8, 28.1, 26.7, 28.7, 27.6, 26.9, 27.7, 27.1] \quad [\SI{}{mN}]
+                F_{max,i}^{H_2O}=[27.9, 27.0, 26.8, 28.1, 26.7, 28.7, 27.6, 26.9, 27.7, 27.1] && [\SI{}{mN}]
             \end{align*}
             The forces are around the mean value
             \begin{align*}
-                \bar{F}_{max}^{H_2O}=\SI{(27.5 \pm 0.66}{mN}
+                \bar{F}_{max}^{H_2O}=\SI{(27.5 \pm 0.7)}{mN}
             \end{align*}
             so the calculated value in \cref{eq:calculated force} is approximated well. By using \cref{eq:surface tension}
             for the surface tension of distilled water, it results:
@@ -100,18 +125,20 @@
         \subsection*{Detergent}
             The maximum forces for detergent are
             \begin{align*}
-                F_{max,detergent,i}=[26.8, 25.8, 26.4, 23.9, 21.0, 21.6, 23.0, 22.6, 27.9, 23.8] \quad \text{(all values in \SI{}{mN})}
+                F_{max,i}^{detergent} = [26.8, 25.8, 26.4, 23.9, 21.0, 21.6, 23.0, 22.6, 27.9, 23.8] &&[\SI{}{mN}]
             \end{align*}
             and their mean value is
             \begin{align*}
-                \bar{F}_{max,detergent}=\SI{24.3}{mN}
+                \bar{F}_{max}^{detergent}=\SI{(24.3 \pm 2.3)}{mN}
             \end{align*}
             For the detergents surface tension it results:
-            \begin{align*}
+            \begin{align}
                 \boxed{\sigma_{detergent}=\SI{(64.46 \pm 0.13)}{\frac{mN}{m}}}
-            \end{align*}
+            \end{align}
             The deviation is calculated equivalently to the one of distilled water.\\
-            In order to be able to compare this value with the literature value, the concentration used has to be estimated. Approximately, the used mass of sodium dodecyl sulfate (detergent) is about $ \SI{0.01}{g} $. Its molar mass is $ \SI{288.4}{\frac{g}{mol}} $ \cite{Quelle2}. For the amount of substance it follows:
+            In order to be able to compare this value with the literature value, the concentration used has to be estimated.
+            Approximately, the used mass of sodium dodecyl sulfate (detergent) is about \(\SI{0.01}{g}\). Its molar mass
+            is \(\SI{288.4}{\frac{g}{mol}}\) \cite{sodium.dodecyl.sulfate.cas.entry.2021}. For the amount of substance it follows:
             \begin{align*}
                 \text{amount of substance} = \frac{\text{mass}}{\text{molar mass}} = \frac{\SI{0.01}{g}}{\SI{288.4}{\frac{g}{mol}}} = \SI{0.035}{mmol}
             \end{align*}

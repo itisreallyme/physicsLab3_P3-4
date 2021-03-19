@@ -3,7 +3,7 @@
     \section{Calibration of the Force Sensor}
         Because of a measurement misfortune for the calibration, the common way for determining the calibration factor is inoperable. Therefore another method is improvised. Originally, the calibration factor $ c $ was supposed to be determined by the linear fit of the ADC result-force-curve, while the weight of the different masses would have been converted into forces:
         \begin{align}
-            c=\frac{\Delta n}{\Delta F}, \qquad [c]=\frac{1}{\SI{}{mN}}
+            c=\frac{\Delta n}{\Delta F} \qquad \left[\frac{1}{\SI{}{mN}}\right]
         \end{align}
         Since this measurement failed, the literature value of the surface tension of distilled water has to be used in order to be able to carry out a backward calculation. For that, \cref{eq:surface tension} is transformed into the force $ F_0 $:
         \begin{align*}
@@ -15,84 +15,88 @@
             \label{eq:force}
         \end{align}
         it follows for distilled water:
-        \begin{align}
-            \frac{n_{max}}{c}&=\sigma_{H_2O} \cdot 4\pi \cdot R_{ring} \nonumber \\
-            \Leftrightarrow \qquad c&=\frac{n_{max}}{\sigma_{H_2O} \cdot 4\pi \cdot R_{ring}}
+        \begin{gather}
+            \frac{n_{max}}{c} = \sigma_{H_2O} \cdot 4\pi \cdot R_{ring} \nonumber \\
+            \Leftrightarrow \nonumber \\
+            c = \frac{n_{max}}{\sigma_{H_2O} \cdot 4\pi \cdot R_{ring}}
             \label{eq:calibration factor}
-        \end{align}
-        with $ \sigma_{H_2O}=\SI{72.8}{\frac{mN}{m}} $ at $ 20 \SIUnitSymbolCelsius $ \cite{Eichler.2016}
-        and $ R_{ring}=\SI{0.03}{m} \pm \SI{0.00005}{m} $ (approximated with the inner radius $ r_i=\SI{0.02923}{m} $ and outer radius $ r_o=\SI{0.03}{m} $)
-        \\\\
-        The ADC result $ n_{max} $ can be read from \textsc{Du Noüy}s ring method measurements with distilled water (\cref{fig:du_noüy_method_measurement_with_distilled_water_no_1_for_calibration}). There are 10 values for $ n_{max} $:
+        \end{gather}
+        with \(\sigma_{H_2O}=\SI{72.8}{\frac{mN}{m}}\) at \SI{20}{\celsius} \cite{Eichler.2016} and \(R_{ring} = \SI{0.03}{m} \pm \SI{0.00005}{m}\)
+        (approximated with the inner radius $ r_i=\SI{0.02923}{m} $ and outer radius $ r_o=\SI{0.03}{m} $)\par\medskip
+        %
+        The ADC result \(n_{max}\) can be read from \textsc{Du Noüy}s ring method measurements with distilled water (\cref{fig:du_noüy_method_measurement_with_distilled_water_no_1_for_calibration}).
+        There are 10 values for \(n_{max}\):
         \begin{align*}
             n_{max,i}=[80321, 77600, 77085, 80827, 76744, 82423, 79322, 77319, 79543, 77873]
         \end{align*}
-        The mean value and the deviation (as standard deviation) are
+        The mean value and the standard deviation are
         \begin{align*}
-            \bar{n}_{max}&=78906\\
+            \bar{n}_{max}&=78906 \\
             \Delta n_{max}&=1883
         \end{align*}
-        \Cref{eq:calibration factor} gives the calibration factor:
+        \Cref{eq:calibration factor} gives the calibration factor with
         \begin{align*}
             \boxed{c=\SI{(2875 \pm 73)}{\frac{1}{mN}}}
         \end{align*}
         The deviation of the calibration factor is calculated as follows:
-        \begin{align*}
-            \Delta c&=\left| \frac{\partial c}{\partial n_{max}} \right| \cdot \Delta n_{max} + \left| \frac{\partial c}{\partial R_{Ring}} \right| \cdot \Delta R_{Ring} \\
-            &=\frac{1}{\sigma_{H_2O} \cdot 4\pi \cdot R_{Ring}} \cdot \Delta n_{max} + \frac{n_{max}}{\sigma_{H_2O} \cdot 4\pi \cdot R_{Ring}^2} \cdot \Delta R_{Ring} \\
-            &=\frac{1}{\SI{72.8}{\frac{mN}{m}} \cdot 4\pi \cdot \SI{0.03}{m}} \cdot 1883 + \frac{78906}{\SI{72.8}{\frac{mN}{m}} \cdot 4\pi \cdot (\SI{0.03}{m})^2} \cdot \SI{0.00005}{m} \\
-            &=\SI{68.61}{\frac{1}{mN}}+\SI{4.79}{\frac{1}{mN}} \\
-            &=\SI{73.4}{\frac{1}{mN}} \approx \SI{73}{\frac{1}{mN}}
-        \end{align*}
+        \begin{align}
+            \Delta c    &=\left| \frac{\partial c}{\partial n_{max}} \right| \cdot \Delta n_{max} + \left| \frac{\partial c}{\partial R_{Ring}} \right| \cdot \Delta R_{Ring} \nonumber \\
+                        &=\frac{\Delta n_{max}}{\sigma_{H_2O} \cdot 4\pi \cdot R_{Ring}} + \frac{n_{max} \cdot \Delta R_{Ring}}{\sigma_{H_2O} \cdot 4\pi \cdot R_{Ring}^2} \nonumber \\
+                        &=\frac{1883}{\SI{72.8}{\frac{mN}{m}} \cdot 4\pi \cdot \SI{0.03}{m}} + \frac{78906 \cdot 5 \cdot \SI{10^{-5}}{m}}{\SI{72.8}{\frac{mN}{m}} \cdot 4\pi \cdot (\SI{0.03}{m})^2} \nonumber \\
+                        &=\SI{68.61}{\frac{1}{mN}}+\SI{4.79}{\frac{1}{mN}} \nonumber \\
+                        &=\SI{73.4}{\frac{1}{mN}} \approx \SI{73}{\frac{1}{mN}}
+        \end{align}
         %
     \section{Resolution and Statistics}
-        For comparison of the raw and filtered data of the A/D converter with regard to statistical variations, both are plotted as a function of the time in a stray diagram in \cref{fig:adc_result}.\\
+        For comparison of the raw and filtered data of the ADC with regard to statistical variations, both are
+        plotted as a function of the time in a stray diagram in \cref{fig:adc_result}.\par
         As it can be seen, the raw data has a greater scattering. This is also confirmed by the standard deviations, which are as follows:
         \begin{align*}
-            \bar{n}_{raw}&=-21, \qquad \sigma_{raw}=58\\
-            \bar{n}_{filtered}&=-23, \qquad \sigma_{filtered}=39
+            \bar{n}_{raw}       &=-21 \qquad \sigma_{raw}=58\\
+            \bar{n}_{filtered}  &=-23 \qquad \sigma_{filtered}=39
         \end{align*}
         Based on that, the deviation of the force to be read can be determined as
-        \begin{align*}
-            \Delta F&=\left| \frac{\partial F}{\partial \bar{n}_{filtered}} \right| \cdot \sigma_{filtered} + \left| \frac{\partial F}{\partial c} \right| \cdot \Delta c \\
-            &=\frac{1}{c} \cdot \sigma_{filtered} + \frac{\left|\bar{n}_{filtered}\right|}{c^2} \cdot \Delta c \\
-            &=\frac{1}{\SI{2875}{\frac{1}{mN}}} \cdot 39 + \frac{23}{(\SI{2875}{\frac{1}{mN}})^2} \cdot \SI{73}{\frac{1}{mN}} \\
-            &=\SI{0.0135}{mN}+\SI{0.0002}{mN} \\
-            &=\SI{0.0137}{mN} \approx \SI{0.01}{mN}
-        \end{align*}
-        The effective resolution of the A/D converter is given by means of \cref{eq:ENOB}:
+        \begin{align}
+            \Delta F    &=\left| \frac{\partial F}{\partial \bar{n}_{filtered}} \right| \cdot \sigma_{filtered} + \left| \frac{\partial F}{\partial c} \right| \cdot \Delta c \nonumber \\
+                        &=\frac{1}{c} \cdot \sigma_{filtered} + \frac{\left|\bar{n}_{filtered}\right|}{c^2} \cdot \Delta c \nonumber \\
+                        &=\frac{39}{\SI{2875}{\frac{1}{mN}}} + \frac{23 \cdot \SI{73}{\frac{1}{mN}}}{(\SI{2875}{\frac{1}{mN}})^2} \cdot \SI{73}{\frac{1}{mN}} \nonumber \\
+                        &=\SI{0.0135}{mN}+\SI{0.0002}{mN} \nonumber \\
+                        &=\SI{13.7}{\micro N}
+        \end{align}
+        The effective resolution of the ADC is given by means of \cref{eq:ENOB}:
         \begin{align*}
             ENOB&=-23-\log_2(39)=-28
         \end{align*}
         Further, the histograms (\cref{fig:histogram_raw_data} and \cref{fig:histogram_filtered_data}) show that the raw data is more widely spread than the filtered one. The raw data histogram has a binning value of around 40 and the filtered data one of around 20.
         %
-    \section{Du Noüy Ring Method Measurement}
-        The data is being sent to the PC during the measurement procedure. When the A/D results are converted into the force by way of \cref{eq:force}, the force-time-diagram, as it is displayed in \crefrange{fig:1}{fig:4}, is obtained.
-
+    \section{\textsc{Du Noüy} Ring Method Measurement}
+        The data is being sent to the PC during the measurement procedure. The diagram representing force over time, as it
+        is displayed in \crefrange{fig:1}{fig:4}, is obtained converting the ADC data into the force by way of \cref{eq:force}. 
+        %
         \subsection*{Distilled Water}
             The maximum forces for distilled water are as follows:
             \begin{align*}
-                F_{max,H_2O,i}=[27.9, 27.0, 26.8, 28.1, 26.7, 28.7, 27.6, 26.9, 27.7, 27.1] \quad \text{(all values in \SI{}{mN})}
+                F_{max,i}^{H_2O}=[27.9, 27.0, 26.8, 28.1, 26.7, 28.7, 27.6, 26.9, 27.7, 27.1] \quad [\SI{}{mN}]
             \end{align*}
             The forces are around the mean value
             \begin{align*}
-                \bar{F}_{max,H_2O}=\SI{27.5}{mN}
+                \bar{F}_{max}^{H_2O}=\SI{(27.5 \pm 0.66}{mN}
             \end{align*}
-            ,so the calculated value in \cref{eq:calculated force} is approximated well.\\
-            By using \cref{eq:surface tension} for the surface tension of distilled water, it results:
+            so the calculated value in \cref{eq:calculated force} is approximated well. By using \cref{eq:surface tension}
+            for the surface tension of distilled water, it results:
             \begin{align*}
-                \boxed{\sigma_{H_2O,determined}=\SI{(72.95 \pm 0.15)}{\frac{mN}{m}}}
+                \boxed{\sigma_{H_2O}^{det}=\SI{(72.95 \pm 0.15)}{\frac{mN}{m}}}
             \end{align*}
-            with the deviation
-            \begin{align*}
-                \Delta \sigma_{H_2O,determined} &= \left| \frac{\partial \sigma_{H_2O,determined}}{\partial \bar{F}_{max,H_2O}} \right| \cdot \Delta F + \left| \frac{\partial \sigma_{H_2O,determined}}{\partial R} \right| \cdot \Delta R \\
-                &= \frac{1}{4\pi \cdot R_{ring}} \cdot \Delta F + \frac{\bar{F}_{max,H_2O}}{4\pi \cdot R_{ring}^2} \cdot \Delta R_{ring} \\
-                &= \frac{1}{4\pi \cdot \SI{0.03}{m}} \cdot \SI{0.01}{mN} + \frac{\SI{27.5}{mN}}{4\pi \cdot (\SI{0.03}{m})^2} \cdot \SI{0.00005}{m} \\
-                &= \SI{0.0265}{\frac{mN}{m}} + \SI{0.122}{\frac{mN}{m}} \\
-                &= \SI{0.1485}{\frac{mN}{m}} \approx \SI{0.15}{\frac{mN}{m}}
-            \end{align*}
-            The determined value of $ \SI{72.95}{\frac{mN}{m}} $ fits well with the literature value of $ \SI{72.8}{\frac{mN}{m}} $. The error area covers the literature value.
-
+            with a deviation
+            \begin{align}
+                \Delta \sigma_{H_2O}^{det}  &= \left| \frac{\partial \sigma_{H_2O,determined}}{\partial \bar{F}_{max,H_2O}} \right| \cdot \Delta F + \left| \frac{\partial \sigma_{H_2O,determined}}{\partial R} \right| \cdot \Delta R \nonumber \\
+                                            &= \frac{\Delta F}{4\pi \cdot R_{ring}} + \frac{\bar{F}_{max}^{H2O}\cdot \Delta R_{ring}}{4\pi \cdot R_{ring}^2} \nonumber \\
+                                            &= \frac{\SI{0.01}{mN}}{4\pi \cdot \SI{0.03}{m}} + \frac{\SI{27.5}{mN}}{4\pi \cdot (\SI{0.03}{m})^2} \cdot \SI{0.00005}{m} \nonumber \\
+                                            &= \SI{0.0265}{\frac{mN}{m}} + \SI{0.122}{\frac{mN}{m}} \nonumber \\
+                                            &= \SI{148.5}{\frac{\micro N}{m}} \approx \SI{150}{\frac{\micro N}{m}}
+            \end{align}
+            The determined value of $ \SI{72.95}{\frac{mN}{m}} $ fits well with the literature value of $ \SI{72.8}{\frac{mN}{m}} $. The area of error covers the literature value.
+            %
         \subsection*{Detergent}
             The maximum forces for detergent are
             \begin{align*}

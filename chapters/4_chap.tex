@@ -48,7 +48,8 @@
         \end{align}
         \begin{figure}[h]
             \centering
-            \includegraphics[width=.9\textwidth]{scidavis/Du_Nouy_Method_Measurement_with_distilled_water_No_1_for_cal.jpg}
+            % \includegraphics[width=.9\textwidth]{scidavis/Du_Nouy_Method_Measurement_with_distilled_water_No_1_for_cal.jpg}
+            \includesvg[inkscapelatex=false, width=.9\textwidth]{scidavis/Du_Nouy_Method_Measurement_with_distilled_water_No_1_for_cal}
             \caption[]{}
             \label{fig:du_nouy_method_measurement_with_distilled_water_no_1_for_calibration}
         \end{figure}
@@ -58,7 +59,9 @@
         plotted as a function of the time in a stray diagram in \cref{fig:adc_result}.\par
         As it can be seen, the raw data has a greater scattering. This is also confirmed by the standard deviations, which are as follows:
         \begin{figure}[h]
-            \centering\includegraphics[width=.9\textwidth]{scidavis/ADC_result.jpg}
+            \centering
+            % \includegraphics[width=.9\textwidth]{scidavis/ADC_result.jpg}
+            \includesvg[inkscapelatex=false, width=.9\textwidth]{scidavis/ADC_result}
             \caption[]{}
             \label{fig:adc_result}
         \end{figure}
@@ -83,13 +86,15 @@
         filtered data one of around 20.
         \begin{figure}[H]
             \centering
-            \includegraphics[width=.9\textwidth]{scidavis/histogram_filtered_data.jpg}
+            % \includegraphics[width=.9\textwidth]{scidavis/histogram_filtered_data.jpg}
+            \includesvg[inkscapelatex=false, width=.9\textwidth]{scidavis/histogram_filtered_data}
             \caption[]{}
             \label{fig:histogram_filtered_data}
         \end{figure}
         \begin{figure}[H]
             \centering
-            \includegraphics[width=.9\textwidth]{scidavis/histogram_raw_data.jpg}
+            % \includegraphics[width=.9\textwidth]{scidavis/histogram_raw_data.jpg}
+            \includesvg[inkscapelatex=false, width=.9\textwidth]{scidavis/histogram_raw_data}
             \caption[]{}
             \label{fig:histogram_raw_data}
         \end{figure}
@@ -98,7 +103,7 @@
         The data is being sent to the PC during the measurement procedure. The diagram representing force over time, as it
         is displayed in \cref{fig:Du_Nouy_Method_Measurement_with_distilled_water_No_1,fig:Du_Nouy_Method_Measurement_with_detergent_No_1,fig:Du_Nouy_Method_Measurement_with_more_detergent_No_1,fig:Du_Nouy_Method_Measurement_with_isopropanol_No_1}, is obtained converting the ADC data into the force by way of \cref{eq:force}. 
         %
-        \subsection*{Distilled Water}
+        \subsection{Distilled Water}
             The maximum forces for distilled water are as follows:
             \begin{align*}
                 F_{max,i}^{H_2O}=[27.9, 27.0, 26.8, 28.1, 26.7, 28.7, 27.6, 26.9, 27.7, 27.1] && [\SI{}{mN}]
@@ -122,7 +127,7 @@
             \end{align}
             The determined value of $ \SI{72.95}{\frac{mN}{m}} $ fits well with the literature value of $ \SI{72.8}{\frac{mN}{m}} $. The area of error covers the literature value.
             %
-        \subsection*{Detergent}
+        \subsection{Detergent}
             The maximum forces for detergent are
             \begin{align*}
                 F_{max,i}^{\rho_1} = [26.8, 25.8, 26.4, 23.9, 21.0, 21.6, 23.0, 22.6, 27.9, 23.8] &&[\SI{}{mN}]
@@ -142,22 +147,28 @@
             per application is approximated with \SI{0.01}{g}. Furthermore, the type of detergent was assumed to be sodium dodecyl sulfate
             as it is a commonly used detergent. Its molar mass \(M\) is \SI{288.4}{\frac{g}{mol}} \cite{sodium.dodecyl.sulfate.cas.entry.2021}.
             For the amount of the substance \(N\) it follows:
-            \begin{align*}
-                N = \frac{m_{detergent}}{M} = \frac{\SI{0.01}{g}}{\SI{288.4}{\frac{g}{mol}}} = \SI{35}{\micro mol}
-            \end{align*}
-            Thus, the concentration \(\rho\) for \(V = \SI{100}{mL}\) of water is
-            \begin{align*}
-                \rho = \frac{N}{V} = \frac{\SI{35}{\micro mol}}{\SI{100}{mL}} = \SI{0.35}{\frac{mmol}{L}}
-            \end{align*}
-            In \cite{synth.of.ACD.as.surfactant.Kumar.2015} at \SI{0.35}{\frac{mmol}{L}} a surface tension of about \SI{63}{\frac{mN}{m}}
+            \begin{align}
+                N = \frac{m_{detergent}}{M} = \frac{\SI{0.01}{g}}{\SI{288.4}{\frac{g}{mol}}} = \SI{34.7}{\micro mol}
+                \label{eq:amount of stuff}
+            \end{align}
+            Thus, the concentration \(\rho\) for \(V = \SI{100}{mL}\) of water is estimated to
+            \begin{align}
+                \rho_1 = \frac{N}{V} = \frac{\SI{34.7}{\micro mol}}{\SI{100}{mL}} \approx \SI{0.35}{\frac{mmol}{L}}
+                \label{eq:concentration}
+            \end{align}
+            In \cite{synth.of.ACD.as.surfactant.Kumar.2015} at \(\rho_1 = \SI{0.35}{\frac{mmol}{L}}\) a surface tension of about \SI{63}{\frac{mN}{m}}
             can be read. So there is a good match between determined and literature value.
             %
-        \subsection*{Raising the Concentration of Detergent}
-            Adding more detergent leads to these maximum forces:
+        \subsection{Raising the Concentration of Detergent}
+            Following \cref{eq:concentration,eq:amount of stuff}, the new concentration raises to
+            \begin{equation}
+                \rho_2 = \frac{2N}{V} \approx \SI{0.69}{\frac{mmol}{L}}
+            \end{equation}
+            Subsequent measurements lead to maximum forces of
             \begin{align*}
-                F_{max,i}^{\rho_2}=[25.8, 24.9, 20.5, 20.8, 18.5, 18.8, 20.9, 26.7, 28.0, 27.6] \quad \text{(all values in \SI{}{mN})}
+                F_{max,i}^{\rho_2}=[25.8, 24.9, 20.5, 20.8, 18.5, 18.8, 20.9, 26.7, 28.0, 27.6] &&[\SI{}{mN}]
             \end{align*}
-            with the mean value
+            with a mean value of
             \begin{align*}
                 \bar{F}_{max}^{\rho_2}=\SI{23.3}{mN}
             \end{align*}
@@ -168,7 +179,7 @@
             The surface tension of the liquid with added detergent is a bit smaller than before. This is an expected behavior as in \cite{synth.of.ACD.as.surfactant.Kumar.2015}
             it can be seen that the surface tension decreases by increasing its concentration.
 
-        \subsection*{Isopropanol}
+        \subsection{Isopropanol}
             With isopropanol the following maximum forces are obtained:
             \begin{align*}
                 F_{max,i}^{IPA}=[8.6, 8.0, 5.9, 5.9, 6.3, 7.7, 5.6, 7.9, 7.4, 7.9] &&[\SI{}{mN}]
